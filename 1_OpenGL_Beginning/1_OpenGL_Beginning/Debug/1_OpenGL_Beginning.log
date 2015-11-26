@@ -1,9 +1,15 @@
-﻿Build started 25.11.2015 12:01:29.
-     1>Project "H:\OpenGL\opengl_stuff_git\1_OpenGL_Beginning\1_OpenGL_Beginning\1_OpenGL_Beginning.vcxproj" on node 2 (Build target(s)).
-     1>Link:
-         1_OpenGL_Beginning.vcxproj -> H:\OpenGL\opengl_stuff_git\1_OpenGL_Beginning\Debug\1_OpenGL_Beginning.exe
-     1>Done Building Project "H:\OpenGL\opengl_stuff_git\1_OpenGL_Beginning\1_OpenGL_Beginning\1_OpenGL_Beginning.vcxproj" (Build target(s)).
+﻿Build started 26.11.2015 18:07:55.
+     1>Project "C:\Projects\OpenGL\opengl_stuff_git\1_OpenGL_Beginning\1_OpenGL_Beginning\1_OpenGL_Beginning.vcxproj" on node 2 (Build target(s)).
+     1>ClCompile:
+         C:\Program Files (x86)\Microsoft Visual Studio 14.0\VC\bin\CL.exe /c /ZI /nologo /W3 /WX- /sdl /Od /Oy- /D _MBCS /Gm /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Zc:inline /Fo"Debug\\" /Fd"Debug\vc140.pdb" /Gd /TP /analyze- /errorReport:prompt Shader_Loader.cpp
+         Shader_Loader.cpp
+       Link:
+         C:\Program Files (x86)\Microsoft Visual Studio 14.0\VC\bin\link.exe /ERRORREPORT:PROMPT /OUT:"C:\Projects\OpenGL\opengl_stuff_git\1_OpenGL_Beginning\Debug\1_OpenGL_Beginning.exe" /INCREMENTAL /NOLOGO /LIBPATH:..\Dependencies\freeglut /LIBPATH:..\Dependencies\glew kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib opengl32.lib freeglut.lib glew32.lib /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /Debug /PDB:"C:\Projects\OpenGL\opengl_stuff_git\1_OpenGL_Beginning\Debug\1_OpenGL_Beginning.pdb" /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"C:\Projects\OpenGL\opengl_stuff_git\1_OpenGL_Beginning\Debug\1_OpenGL_Beginning.lib" /MACHINE:X86 Debug\main.obj
+         Debug\Shader_Loader.obj
+         LINK : C:\Projects\OpenGL\opengl_stuff_git\1_OpenGL_Beginning\Debug\1_OpenGL_Beginning.exe not found or not built by the last incremental link; performing full link
+         1_OpenGL_Beginning.vcxproj -> C:\Projects\OpenGL\opengl_stuff_git\1_OpenGL_Beginning\Debug\1_OpenGL_Beginning.exe
+     1>Done Building Project "C:\Projects\OpenGL\opengl_stuff_git\1_OpenGL_Beginning\1_OpenGL_Beginning\1_OpenGL_Beginning.vcxproj" (Build target(s)).
 
 Build succeeded.
 
-Time Elapsed 00:00:01.67
+Time Elapsed 00:00:01.26

@@ -121,9 +121,10 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp" />
+    <ClCompile Include="Shader_Loader.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="ShaderLoader.h" />
+    <ClInclude Include="Shader_Loader.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
