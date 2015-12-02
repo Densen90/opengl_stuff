@@ -29,9 +29,16 @@
     <ClInclude Include="Core\Shader_Loader.h">
       <Filter>Source Files\Core</Filter>
     </ClInclude>
+    <ClInclude Include="VertexFormat.h">
+      <Filter>Source Files\Core</Filter>
+    </ClInclude>
+    <ClInclude Include="GameModels.h">
+      <Filter>Source Files\Core</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <None Include="Shader\vertex.glsl" />
     <None Include="Shader\fragment.glsl" />
+    <None Include="packages.config" />
   </ItemGroup>
 </Project>
