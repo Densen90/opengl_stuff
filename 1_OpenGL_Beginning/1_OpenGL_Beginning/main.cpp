@@ -32,7 +32,7 @@ void init()
 
 	//load and compile Shader
 	Shader_Loader shaderLoader;
-	shaderLoader.CreateProgram("Shader\\vertex.glsl", "Shader\\fragment.glsl");
+	program = shaderLoader.CreateProgram("Shader\\vertex.glsl", "Shader\\fragment.glsl");
 
 	// front- and back-facing polygons, GL_POINT, GL_LINE, or GL_FILL --> here, fill faces
 	glPolygonMode(GL_FRONT_AND_BACK, GL_FILL);
