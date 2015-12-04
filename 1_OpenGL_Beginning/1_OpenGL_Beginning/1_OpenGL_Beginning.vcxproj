@@ -120,13 +120,14 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="Core\GameModels.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="Core\Shader_Loader.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Core\Shader_Loader.h" />
-    <ClInclude Include="GameModels.h" />
-    <ClInclude Include="VertexFormat.h" />
+    <ClInclude Include="Core\GameModels.h" />
+    <ClInclude Include="Core\VertexFormat.h" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />

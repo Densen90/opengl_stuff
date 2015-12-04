@@ -1,10 +1,13 @@
-#include "Dependencies\glew\glew.h"
-#include "Dependencies\freeglut\freeglut.h"
+#pragma once
 #include "Core\Shader_Loader.h"
+#include "Core\GameModels.h"
 #include <iostream>
+#include <stdio.h>
+#include <stdlib.h>
+#include <fstream>
+#include <vector>
 
-using namespace Core;
-
+Models::GameModels *gameModels;
 GLuint program;
 
 void renderScene()
@@ -12,14 +15,20 @@ void renderScene()
 	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT); //clear buffer --> color and depth
 	glClearColor(0.25, 0.8, 0.65, 1.0);
 
-	//use the created program
-	glUseProgram(program);
+	glBindVertexArray(gameModels->GetModel("triangle1"));	//bind the VAO and draw the triangle
+	glUseProgram(program);	//use the created program
 
 	//draw 3 vertices as triangles
-	glDrawArrays(GL_TRIANGLES, 0, 3);
+	glDrawArrays(GL_TRIANGLES, 0, 6);
 
 	glutSwapBuffers();
 	glutPostRedisplay();
+}
+
+void closeCallback()
+{
+	std::cout << "GLUT:\t Finished" << std::endl;
+	glutLeaveMainLoop();
 }
 
 void init()
@@ -30,8 +39,12 @@ void init()
 	//do depth comparisons and update the depth buffer
 	glEnable(GL_DEPTH_TEST);
 
+	//initialize our game models
+	gameModels = new Models::GameModels();
+	gameModels->CreateTriangleModel("triangle1");
+
 	//load and compile Shader
-	Shader_Loader shaderLoader;
+	Core::Shader_Loader shaderLoader;
 	program = shaderLoader.CreateProgram("Shader\\vertex.glsl", "Shader\\fragment.glsl");
 
 	// front- and back-facing polygons, GL_POINT, GL_LINE, or GL_FILL --> here, fill faces
@@ -50,7 +63,11 @@ int main(int argc, char **argv)
 	init();
 
 	glutDisplayFunc(renderScene);
+	glutCloseFunc(closeCallback);
+
 	glutMainLoop();
+
+	delete gameModels;
 	glDeleteProgram(program);
 	return 0;
 }

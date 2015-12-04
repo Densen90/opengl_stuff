@@ -1,11 +1,13 @@
-#version 430 core
+#version 430 core	//version of OpenGL used
+
+layout(location = 0) in vec3 in_position;	//set the frist input on location (index/pipt) 0 
+											//--> glVertexAttribPointer(0,...) sets this pipe, glEnableVertexAttribArray(0) activates it in Code
+layout(location = 1) in vec4 in_color;		//pipe 1 for color of vertex
+
+out vec4 color;	//ouput the color to give to the fragment shader
 
 void main()
 {
-	//down,left corner: -1,-1   up,right corner: 1,1
-	const vec4 vertices[3] = vec4[3](vec4(0.25, -0.25, 0.5, 1.0),	//x,y,z divided by fourth value for transformation, w=1.0, standard; w=0.0, normal
-									vec4(-0.25, -0.25, 0.5, 1.0),
-									vec4(0.25, 0.25, 0.5, 1.0));
-
-	gl_Position = vertices[gl_VertexID];
+	color = in_color;
+	gl_Position = vec4(in_position, 1.0);	//w=1.0 for standard transformation in Normalized Device Coordinates(NDC) --> w=0.0 is the normal of the position
 }
