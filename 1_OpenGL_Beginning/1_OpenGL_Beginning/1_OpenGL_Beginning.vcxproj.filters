@@ -21,21 +21,21 @@
     <ClCompile Include="main.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Core\Shader_Loader.cpp">
+    <ClCompile Include="Core\GameModels.cpp">
       <Filter>Source Files\Core</Filter>
     </ClCompile>
-    <ClCompile Include="Core\GameModels.cpp">
+    <ClCompile Include="Managers\Shader_Manager.cpp">
       <Filter>Source Files\Core</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="Core\Shader_Loader.h">
-      <Filter>Source Files\Core</Filter>
-    </ClInclude>
     <ClInclude Include="Core\GameModels.h">
       <Filter>Source Files\Core</Filter>
     </ClInclude>
     <ClInclude Include="Core\VertexFormat.h">
+      <Filter>Source Files\Core</Filter>
+    </ClInclude>
+    <ClInclude Include="Managers\Shader_Manager.h">
       <Filter>Source Files\Core</Filter>
     </ClInclude>
   </ItemGroup>

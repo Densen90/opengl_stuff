@@ -1,5 +1,5 @@
 #pragma once
-#include "Core\Shader_Loader.h"
+#include "Managers\Shader_Manager.h"
 #include "Core\GameModels.h"
 #include <iostream>
 #include <stdio.h>
@@ -8,6 +8,8 @@
 #include <vector>
 
 Models::GameModels *gameModels;
+Managers::Shader_Manager *shaderManager;
+
 GLuint program;
 
 void renderScene()
@@ -44,8 +46,9 @@ void init()
 	gameModels->CreateTriangleModel("triangle1");
 
 	//load and compile Shader
-	Core::Shader_Loader shaderLoader;
-	program = shaderLoader.CreateProgram("Shader\\vertex.glsl", "Shader\\fragment.glsl");
+	shaderManager = new Managers::Shader_Manager();
+	shaderManager->CreateProgram("ColoredTriangle", "Shader\\vertex.glsl", "Shader\\fragment.glsl");	//could be static too maybe? no need of creating an instance?
+	program = Managers::Shader_Manager::GetShader("ColoredTriangle");	//Call the static function without having a instance
 
 	// front- and back-facing polygons, GL_POINT, GL_LINE, or GL_FILL --> here, fill faces
 	glPolygonMode(GL_FRONT_AND_BACK, GL_FILL);
@@ -68,7 +71,7 @@ int main(int argc, char **argv)
 	glutMainLoop();
 
 	delete gameModels;
-	glDeleteProgram(program);
+	delete shaderManager;
 	return 0;
 }
 

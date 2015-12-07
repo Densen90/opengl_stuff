@@ -122,10 +122,10 @@
   <ItemGroup>
     <ClCompile Include="Core\GameModels.cpp" />
     <ClCompile Include="main.cpp" />
-    <ClCompile Include="Core\Shader_Loader.cpp" />
+    <ClCompile Include="Managers\Shader_Manager.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="Core\Shader_Loader.h" />
+    <ClInclude Include="Managers\Shader_Manager.h" />
     <ClInclude Include="Core\GameModels.h" />
     <ClInclude Include="Core\VertexFormat.h" />
   </ItemGroup>
