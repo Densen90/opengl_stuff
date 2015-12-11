@@ -91,6 +91,9 @@ void Shader_Manager::CreateProgram(const std::string &shaderName, const std::str
 		std::cout << "Shader_Loader: LINK ERROR" << std::endl << &program_log[0] << std::endl;
 		return;
 	}
+
+	std::cout << "Shader_Manager: Created program for shader: " << shaderName.c_str() << std::endl;
+
 	//not checked if dhader already in map --> do that later
 	programs[shaderName] = program;
 }

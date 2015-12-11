@@ -1,4 +1,5 @@
 #pragma once
+#include "IListener.h"
 #include "ContextInfo.h"
 #include "FrameBufferInfo.h"
 #include "WindowInfo.h"
@@ -23,10 +24,15 @@ namespace Core
 			void EnterFullscreen();
 			void ExitFullscreen();
 
+			static void SetListener(Core::IListener *&iListener);
+
 			//used to print info about OpenGL
 			static void printOpenGLInfo(const Core::WindowInfo &windowInfo, const Core::ContextInfo &context);
 
 		private:
+			static Core::IListener *listener;
+			static Core::WindowInfo windowInformation;
+
 			static void idleCallback();
 			static void displayCallback();
 			static void reshapeCallback(int width, int height);

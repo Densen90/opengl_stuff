@@ -1,5 +1,6 @@
 #pragma once
 #include "Core\Init\Init_GLUT.h"
+#include "Managers\Scene_Manager.h"
 
 using namespace Core;
 using namespace Init;
@@ -15,7 +16,14 @@ int main(int argc, char **argv)
 
 	Init_GLUT::Init(window, context, fbi);
 
+	//Set our scene, our listener for drawings
+	IListener *scene = new Managers::Scene_Manager();
+	Init_GLUT::SetListener(scene);
+
 	Init_GLUT::Run();
+
+	//delete scene/listener before quitting
+	delete scene;
 	return 0;
 }
 

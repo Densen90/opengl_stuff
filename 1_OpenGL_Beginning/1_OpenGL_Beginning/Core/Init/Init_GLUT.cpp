@@ -2,6 +2,10 @@
 
 using namespace Core::Init;
 
+//make sure that static attributes are visible in cpp
+Core::IListener* Init_GLUT::listener = NULL;
+Core::WindowInfo Init_GLUT::windowInformation;
+
 void Init_GLUT::Init(const Core::WindowInfo &windowInfo, const Core::ContextInfo &context, const Core::FrameBufferInfo &buffer)
 {
 	//we need fake arguements, because we are not in the main anymore
@@ -25,6 +29,8 @@ void Init_GLUT::Init(const Core::WindowInfo &windowInfo, const Core::ContextInfo
 	glutInitWindowPosition(windowInfo.xPos, windowInfo.yPos);
 	glutInitWindowSize(windowInfo.width, windowInfo.height);	// if we call those three functions after CreateWindow, it would have no effect
 	glutCreateWindow(windowInfo.name.c_str());
+
+	windowInformation = windowInfo;
 
 	std::cout << "GLUT initialized" << std::endl;
 
@@ -66,6 +72,11 @@ void Init_GLUT::ExitFullscreen()
 	glutLeaveFullScreen();
 }
 
+void Init_GLUT::SetListener(Core::IListener *&iListener)
+{
+	listener = iListener;
+}
+
 void Init_GLUT::printOpenGLInfo(const Core::WindowInfo &windowInfo, const Core::ContextInfo &context)
 {
 	const unsigned char* renderer = glGetString(GL_RENDERER);
@@ -94,15 +105,29 @@ void Init_GLUT::idleCallback()
 
 void Init_GLUT::displayCallback()
 {
-	//called when window should be redisplayed, here called by glutPostRedisplay in idleFunc
-	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT); //clear buffer --> color and depth
-	glClearColor(0, 0, 0, 1);
-	glutSwapBuffers();
+	if (listener != NULL)
+	{
+		listener->notifyBeginFrame();	//Begin of Displaying a new frame -> CPU stuff
+		listener->notifyDisplayFrame();	//drawing the new frame, then swapping buffers
+
+		glutSwapBuffers();
+
+		listener->notifyEndFrame();	//after frame has been drawn
+	}
 }
 
 void Init_GLUT::reshapeCallback(int width, int height)
 {
+	if (windowInformation.isReshapable)
+	{
+		if (listener != NULL)
+		{
+			listener->notifyReshape(width, height, windowInformation.width, windowInformation.height);
+		}
 
+		windowInformation.width = width;
+		windowInformation.height = height;
+	}
 }
 
 void Init_GLUT::closeCallback()
