@@ -20,7 +20,7 @@ namespace Core
 
 		FrameBufferInfo(bool color, bool depth, bool stencil, bool msaa)
 		{
-			flags = GL_DOUBLE;	//must have
+			flags = GLUT_DOUBLE;	//must have
 
 			if (color) flags |= GLUT_RGBA | GLUT_ALPHA;
 			if (depth) flags |= GLUT_DEPTH;

@@ -1,77 +1,21 @@
 #pragma once
-#include "Managers\Shader_Manager.h"
-#include "Core\GameModels.h"
-#include <iostream>
-#include <stdio.h>
-#include <stdlib.h>
-#include <fstream>
-#include <vector>
+#include "Core\Init\Init_GLUT.h"
 
-Models::GameModels *gameModels;
-Managers::Shader_Manager *shaderManager;
-
-GLuint program;
-
-void renderScene()
-{
-	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT); //clear buffer --> color and depth
-	glClearColor(0.25, 0.8, 0.65, 1.0);
-
-	glBindVertexArray(gameModels->GetModel("triangle1"));	//bind the VAO and draw the triangle
-	glUseProgram(program);	//use the created program
-
-	//draw 3 vertices as triangles
-	glDrawArrays(GL_TRIANGLES, 0, 6);
-
-	glutSwapBuffers();
-	glutPostRedisplay();
-}
-
-void closeCallback()
-{
-	std::cout << "GLUT:\t Finished" << std::endl;
-	glutLeaveMainLoop();
-}
-
-void init()
-{
-	char *versionText = glewIsSupported("GL_VERSION_4_5") ? "GLEW Version is 4.5" : "GLEW 4.5 is not supported";
-	std::cout << versionText << std::endl;
-
-	//do depth comparisons and update the depth buffer
-	glEnable(GL_DEPTH_TEST);
-
-	//initialize our game models
-	gameModels = new Models::GameModels();
-	gameModels->CreateTriangleModel("triangle1");
-
-	//load and compile Shader
-	shaderManager = new Managers::Shader_Manager();
-	shaderManager->CreateProgram("ColoredTriangle", "Shader\\vertex.glsl", "Shader\\fragment.glsl");	//could be static too maybe? no need of creating an instance?
-	program = Managers::Shader_Manager::GetShader("ColoredTriangle");	//Call the static function without having a instance
-
-	// front- and back-facing polygons, GL_POINT, GL_LINE, or GL_FILL --> here, fill faces
-	glPolygonMode(GL_FRONT_AND_BACK, GL_FILL);
-}
+using namespace Core;
+using namespace Init;
 
 int main(int argc, char **argv)
 {
-	glutInit(&argc, argv);
-	glutInitDisplayMode(GLUT_DEPTH | GLUT_DOUBLE | GLUT_RGBA); // window with a depth buffer | double buffered | RGBA Mode
-	glutInitWindowPosition(500, 100);
-	glutInitWindowSize(800, 600);
-	glutCreateWindow("Drawing Triangles with shader");
-	glewInit();
-	
-	init();
+	WindowInfo window(std::string("Basic Game Engine: Dangine"),	//title
+						800, 600,	//size
+						400, 200,	//position
+						true);	//resizable
+	ContextInfo context(4, 5, true);	//core, version 4.5
+	FrameBufferInfo fbi(true, true, true, true);	//color, depth, stencil, msaa
 
-	glutDisplayFunc(renderScene);
-	glutCloseFunc(closeCallback);
+	Init_GLUT::Init(window, context, fbi);
 
-	glutMainLoop();
-
-	delete gameModels;
-	delete shaderManager;
+	Init_GLUT::Run();
 	return 0;
 }
 

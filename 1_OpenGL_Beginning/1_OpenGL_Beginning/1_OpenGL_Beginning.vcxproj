@@ -122,6 +122,7 @@
   <ItemGroup>
     <ClCompile Include="Core\GameModels.cpp" />
     <ClCompile Include="Core\Init\Init_GLEW.cpp" />
+    <ClCompile Include="Core\Init\Init_GLUT.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="Managers\Shader_Manager.cpp" />
   </ItemGroup>
@@ -129,6 +130,7 @@
     <ClInclude Include="Core\Init\ContextInfo.h" />
     <ClInclude Include="Core\Init\FrameBufferInfo.h" />
     <ClInclude Include="Core\Init\Init_GLEW.h" />
+    <ClInclude Include="Core\Init\Init_GLUT.h" />
     <ClInclude Include="Core\Init\WindowInfo.h" />
     <ClInclude Include="Managers\Shader_Manager.h" />
     <ClInclude Include="Core\GameModels.h" />

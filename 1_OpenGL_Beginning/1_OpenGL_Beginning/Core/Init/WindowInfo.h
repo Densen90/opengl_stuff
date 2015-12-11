@@ -19,8 +19,8 @@ namespace Core
 			name = "OpenGL - Basic Engine";
 			width = 800;
 			height = 600;
-			x_pos = 300;
-			y_pos = 300;
+			xPos = 300;
+			yPos = 300;
 		}
 
 		//specific window
