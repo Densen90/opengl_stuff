@@ -10,10 +10,10 @@ namespace Managers
 		Scene_Manager();
 		~Scene_Manager();
 
-		virtual void notifyBeginFrame();
-		virtual void notifyDisplayFrame();
-		virtual void notifyEndFrame();
-		virtual void notifyReshape(int width, int height, int previousWidth, int previousHeight);
+		virtual void notifyBeginFrame() override;
+		virtual void notifyDisplayFrame() override;
+		virtual void notifyEndFrame() override;
+		virtual void notifyReshape(int width, int height, int previousWidth, int previousHeight) override;
 	private:
 		Managers::Shader_Manager *shaderManager;
 	};

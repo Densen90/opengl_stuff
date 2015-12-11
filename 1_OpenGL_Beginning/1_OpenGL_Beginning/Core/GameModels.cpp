@@ -1,6 +1,7 @@
 #include "GameModels.h"
 
 using namespace Models;
+using namespace Rendering;
 
 GameModels::GameModels(){}
 
