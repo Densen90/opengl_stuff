@@ -1,5 +1,6 @@
 #pragma once
 #include "Shader_Manager.h"
+#include "Models_Manager.h"
 #include "../Core/Init/IListener.h"
 
 namespace Managers
@@ -16,5 +17,6 @@ namespace Managers
 		virtual void notifyReshape(int width, int height, int previousWidth, int previousHeight) override;
 	private:
 		Managers::Shader_Manager *shaderManager;
+		Managers::Models_Manager *modelsManager;
 	};
 }
